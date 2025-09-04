@@ -1,0 +1,7 @@
+services:
+  smtp-relay:
+    build: .
+    env_file: .env
+    ports:
+      - "${SMTP_PORT}:25"
+    restart: unless-stopped
