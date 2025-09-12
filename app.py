@@ -56,6 +56,7 @@ def authenticator_func(server, session, envelope, mechanism, auth_data):
     if mechanism == "LOGIN":
         login, password = auth_data
         if login == valid_user and password == valid_pass:
+            print("Authentication successful")
             return AuthResult(success=True)
 
     elif mechanism == "PLAIN":
@@ -64,8 +65,10 @@ def authenticator_func(server, session, envelope, mechanism, auth_data):
         password = password.decode() if isinstance(password, bytes) else password
         
         if login == valid_user and password == valid_pass:
+            print("Authentication successful")
             return AuthResult(success=True)
 
+    print(f"Authentication failed - credentials: {auth_data}")
     return AuthResult(success=False)
 
 
