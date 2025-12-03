@@ -4,12 +4,13 @@ By Karel Cermak | [Karlosoft](https://karlosoft.com).
 
 ## Description
 - SMTP Relay is a simple SMTP server that forwards emails to another SMTP server.
-- Ideal application is to use it with old copy machines that only support SMTP authentication and does not support modern TLS etc.
+- The ideal application is to use it with an old machine (e.g. a copier) that only supports SMTP authentication and does not support modern TLS, etc.
 
 
 ## How to install
 - Get some Linux distro (Ubuntu is recommended)
 - Install docker: https://docs.docker.com/engine/install/
+- Clone this repository and copy the example environment file:
 
 ```
 git clone https://github.com/K-cermak/SMTP-Relay.git
