@@ -32,12 +32,10 @@ class ForwardingHandler:
         else:
             incoming_msg["From"] = self.relay_from
 
-        # Keep the original To header so Bcc recipients are not disclosed
         if "To" not in incoming_msg:
             incoming_msg["To"] = ", ".join(envelope.rcpt_tos)
 
         try:
-            # smtplib is blocking, run it outside of the event loop
             await asyncio.to_thread(self.forward, incoming_msg, envelope.rcpt_tos)
             print("E-mail successfully forwarded")
 
@@ -51,7 +49,6 @@ class ForwardingHandler:
         with smtplib.SMTP(self.relay_host, self.relay_port, timeout=30) as smtp:
             smtp.starttls(context=ssl.create_default_context())
             smtp.login(self.relay_user, self.relay_pass)
-            # Deliver only to envelope recipients, not to addresses from To/Cc/Bcc headers
             smtp.send_message(msg, from_addr=self.relay_from, to_addrs=rcpt_tos)
 
 
@@ -65,12 +62,10 @@ def authenticator_func(server, session, envelope, mechanism, auth_data):
 
     login = None
     if mechanism in ("LOGIN", "PLAIN") and isinstance(auth_data, LoginPassword):
-        # aiosmtpd passes login and password as bytes
         login = to_bytes(auth_data.login)
         password = to_bytes(auth_data.password)
 
         if valid_user and valid_pass:
-            # Compare both values in constant time to avoid timing attacks
             user_ok = hmac.compare_digest(login, valid_user.encode())
             pass_ok = hmac.compare_digest(password, valid_pass.encode())
 
@@ -80,7 +75,6 @@ def authenticator_func(server, session, envelope, mechanism, auth_data):
 
     login_str = login.decode(errors="replace") if login is not None else None
     print(f"Authentication failed - login: {login_str}")
-    # handled=False makes aiosmtpd reply with 535 instead of leaving the client hanging
     return AuthResult(success=False, handled=False)
 
 
