@@ -4,12 +4,12 @@ By Karel Cermak | [Karlosoft](https://karlosoft.com).
 
 ## Description
 - SMTP Relay is a simple SMTP server that forwards emails to another SMTP server.
-- The ideal application is to use it with an old machine (e.g. a copier) that only supports SMTP authentication and does not support modern TLS, etc.
+- It is ideal for older devices (e.g. copiers) that support only basic SMTP authentication and not modern TLS.
 
 
-## How to install
-- Get some Linux distro (Ubuntu is recommended)
-- Install docker: https://docs.docker.com/engine/install/
+## Installation
+- Get a Linux distribution (Ubuntu or Debian is recommended).
+- Install Docker: https://docs.docker.com/engine/install/
 - Clone this repository and copy the example environment file:
 
 ```
@@ -22,9 +22,9 @@ cp .env.example .env
 
 <br>
 
-- Edit the .env file for example with nano or vim.
+- Edit the .env file, for example with nano or vim:
 ```
-SMTP_PORT=1025 # PORT WHERE THE SMTP WILL BE AVAILABLE
+SMTP_PORT=1025              # PORT ON WHICH THE RELAY WILL BE AVAILABLE
 
 LOCAL_USER=user             # LOCAL USER FOR SMTP AUTHENTICATION
 LOCAL_PASS=password         # LOCAL PASSWORD FOR SMTP AUTHENTICATION
@@ -36,9 +36,9 @@ RELAY_PASS=password         # REMOTE SMTP PASSWORD
 ```
 
 
-- Start the Docker:
+- Start the container:
 ```
 docker compose up -d
 ```
 
-- If the Docker socket is not accessible, you may need to adjust the permissions: https://stackoverflow.com/questions/48957195/how-to-fix-docker-permission-denied
+- If you get a "permission denied" error when accessing the Docker socket, you may need to adjust the permissions: https://stackoverflow.com/questions/48957195/how-to-fix-docker-permission-denied
