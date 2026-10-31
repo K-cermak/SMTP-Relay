@@ -24,7 +24,7 @@ class ForwardingHandler:
         print("From:", envelope.mail_from)
         print("To:", envelope.rcpt_tos)
 
-        
+
         incoming_msg = message_from_bytes(envelope.content)
 
         if "From" in incoming_msg:
