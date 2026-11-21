@@ -1,6 +1,6 @@
 # SMTP Relay
 
-By Karel Cermak | [Karlosoft](https://karlosoft.com).
+By Karel Čermák | [Karlosoft](https://karlosoft.com).
 
 ## Description
 - SMTP Relay is a simple SMTP server that forwards emails to another SMTP server.
