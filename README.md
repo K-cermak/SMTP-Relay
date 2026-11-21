@@ -1,6 +1,14 @@
-# SMTP Relay
+<p align="center">
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://cdn.karlosoft.com/cdn-data/ks/img/smtprelay/logo.svg">
+        <source media="(prefers-color-scheme: light)" srcset="https://cdn.karlosoft.com/cdn-data/ks/img/smtprelay/logo-dark.svg">
+        <img alt="SMTP Relay" src="https://cdn.karlosoft.com/cdn-data/ks/img/smtprelay/logo-dark.svg" width="700">
+    </picture>
+    <br>
+    <strong>Dockerized SMTP relay that lets legacy devices without TLS support send email through a modern SMTP provider.</strong>
+</p>
 
-By Karel Čermák | [Karlosoft](https://karlosoft.com).
+<br>
 
 ## Description
 - SMTP Relay is a simple SMTP server that forwards emails to another SMTP server.
